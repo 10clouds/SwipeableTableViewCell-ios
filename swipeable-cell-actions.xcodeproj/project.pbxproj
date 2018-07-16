@@ -11,10 +11,11 @@
 		C659CD8820F7697B00A73C03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C659CD8720F7697B00A73C03 /* Assets.xcassets */; };
 		C659CD8B20F7697B00A73C03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C659CD8920F7697B00A73C03 /* LaunchScreen.storyboard */; };
 		C659CD9420F769BC00A73C03 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C659CD9220F769BC00A73C03 /* TableViewController.swift */; };
-		C659CD9520F769BC00A73C03 /* SwipeableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C659CD9320F769BC00A73C03 /* SwipeableTableViewCell.swift */; };
+		C659CD9520F769BC00A73C03 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C659CD9320F769BC00A73C03 /* TableViewCell.swift */; };
 		C659CD9920F8AF1100A73C03 /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C659CD9820F8AF1100A73C03 /* TableViewModel.swift */; };
 		C659CDAE20F8B09F00A73C03 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = C659CDAD20F8B09F00A73C03 /* Fonts */; };
 		C659CDB020F8B26D00A73C03 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = C659CDAF20F8B26D00A73C03 /* Font.swift */; };
+		E7362BF6AB068F4227F489BC /* SwipeableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73620FF76B0FB733CFE07DB /* SwipeableTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,10 +25,11 @@
 		C659CD8A20F7697B00A73C03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C659CD8C20F7697B00A73C03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C659CD9220F769BC00A73C03 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		C659CD9320F769BC00A73C03 /* SwipeableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableTableViewCell.swift; sourceTree = "<group>"; };
+		C659CD9320F769BC00A73C03 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		C659CD9820F8AF1100A73C03 /* TableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewModel.swift; sourceTree = "<group>"; };
 		C659CDAD20F8B09F00A73C03 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 		C659CDAF20F8B26D00A73C03 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		E73620FF76B0FB733CFE07DB /* SwipeableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +63,8 @@
 			isa = PBXGroup;
 			children = (
 				C659CD8020F7697A00A73C03 /* AppDelegate.swift */,
-				C659CD9320F769BC00A73C03 /* SwipeableTableViewCell.swift */,
+				E73620FF76B0FB733CFE07DB /* SwipeableTableViewCell.swift */,
+				C659CD9320F769BC00A73C03 /* TableViewCell.swift */,
 				C659CD9820F8AF1100A73C03 /* TableViewModel.swift */,
 				C659CD9220F769BC00A73C03 /* TableViewController.swift */,
 				C659CDAF20F8B26D00A73C03 /* Font.swift */,
@@ -146,9 +149,10 @@
 			files = (
 				C659CD9420F769BC00A73C03 /* TableViewController.swift in Sources */,
 				C659CDB020F8B26D00A73C03 /* Font.swift in Sources */,
-				C659CD9520F769BC00A73C03 /* SwipeableTableViewCell.swift in Sources */,
+				C659CD9520F769BC00A73C03 /* TableViewCell.swift in Sources */,
 				C659CD8120F7697A00A73C03 /* AppDelegate.swift in Sources */,
 				C659CD9920F8AF1100A73C03 /* TableViewModel.swift in Sources */,
+				E7362BF6AB068F4227F489BC /* SwipeableTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
