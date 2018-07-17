@@ -17,14 +17,38 @@ open class SwipeableTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }()
 
     private lazy var scrollView: UIScrollView = {
-        let view = UIScrollView(frame: bounds)
+        let view = UIScrollView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.scrollsToTop = false
         view.showsHorizontalScrollIndicator = false
         view.showsVerticalScrollIndicator = false
         view.delegate = self
-        view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 160)
+        view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 126)
         view.isUserInteractionEnabled = false
+        return view
+    }()
+
+    private lazy var deleteButton: Button = {
+        let view = Button(type: .system)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.setImage(UIImage(named: "trash"), for: .normal)
+        view.imageEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+        view.tintColor = UIColor.white
+        view.backgroundColor = UIColor(named: "coralPinkColor")
+        view.layer.cornerRadius = 21
+        view.clipsToBounds = true
+        return view
+    }()
+
+    private lazy var featuredButton: Button = {
+        let view = Button(type: .system)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.setImage(UIImage(named: "star"), for: .normal)
+        view.imageEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+        view.tintColor = UIColor.white
+        view.backgroundColor = UIColor(named: "periwinkleColor")
+        view.layer.cornerRadius = 21
+        view.clipsToBounds = true
         return view
     }()
 
@@ -32,12 +56,14 @@ open class SwipeableTableViewCell: UITableViewCell, UIScrollViewDelegate {
 
     public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        layoutButtons()
         layoutScrollView()
     }
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         layoutScrollView()
+        layoutButtons()
     }
 
     // MARK: - Public
@@ -51,7 +77,7 @@ open class SwipeableTableViewCell: UITableViewCell, UIScrollViewDelegate {
     private func layoutScrollView() {
         super.contentView.addSubview(scrollView)
         super.contentView.addGestureRecognizer(scrollView.panGestureRecognizer)
-        
+
         scrollView.addSubview(scrollViewContentView)
 
         let scrollViewContentViewHeightConstraint = scrollViewContentView.widthAnchor
@@ -71,6 +97,24 @@ open class SwipeableTableViewCell: UITableViewCell, UIScrollViewDelegate {
             scrollViewContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 1),
             scrollViewContentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 1),
             scrollViewContentViewHeightConstraint
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
+
+    private func layoutButtons() {
+        contentView.addSubview(deleteButton)
+        contentView.addSubview(featuredButton)
+        
+        let constraints = [
+            deleteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            deleteButton.widthAnchor.constraint(equalToConstant: 42),
+            deleteButton.heightAnchor.constraint(equalToConstant: 42),
+            deleteButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+
+            featuredButton.trailingAnchor.constraint(equalTo: deleteButton.leadingAnchor, constant: -22),
+            featuredButton.widthAnchor.constraint(equalToConstant: 42),
+            featuredButton.heightAnchor.constraint(equalToConstant: 42),
+            featuredButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }

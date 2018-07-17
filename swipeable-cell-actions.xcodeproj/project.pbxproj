@@ -15,6 +15,7 @@
 		C659CD9920F8AF1100A73C03 /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C659CD9820F8AF1100A73C03 /* TableViewModel.swift */; };
 		C659CDAE20F8B09F00A73C03 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = C659CDAD20F8B09F00A73C03 /* Fonts */; };
 		C659CDB020F8B26D00A73C03 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = C659CDAF20F8B26D00A73C03 /* Font.swift */; };
+		E73621DDE7B4BDEC52B64286 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736222B07B6ABD9332EBC37 /* Button.swift */; };
 		E7362BF6AB068F4227F489BC /* SwipeableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73620FF76B0FB733CFE07DB /* SwipeableTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		C659CDAD20F8B09F00A73C03 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 		C659CDAF20F8B26D00A73C03 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		E73620FF76B0FB733CFE07DB /* SwipeableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableTableViewCell.swift; sourceTree = "<group>"; };
+		E736222B07B6ABD9332EBC37 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			children = (
 				C659CD8020F7697A00A73C03 /* AppDelegate.swift */,
 				E73620FF76B0FB733CFE07DB /* SwipeableTableViewCell.swift */,
+				E736222B07B6ABD9332EBC37 /* Button.swift */,
 				C659CD9320F769BC00A73C03 /* TableViewCell.swift */,
 				C659CD9820F8AF1100A73C03 /* TableViewModel.swift */,
 				C659CD9220F769BC00A73C03 /* TableViewController.swift */,
@@ -153,6 +156,7 @@
 				C659CD8120F7697A00A73C03 /* AppDelegate.swift in Sources */,
 				C659CD9920F8AF1100A73C03 /* TableViewModel.swift in Sources */,
 				E7362BF6AB068F4227F489BC /* SwipeableTableViewCell.swift in Sources */,
+				E73621DDE7B4BDEC52B64286 /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
