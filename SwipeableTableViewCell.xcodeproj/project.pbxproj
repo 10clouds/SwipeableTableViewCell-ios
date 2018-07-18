@@ -20,7 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C659CD7D20F7697A00A73C03 /* swipeable-cell-actions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swipeable-cell-actions.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C659CD7D20F7697A00A73C03 /* SwipeableTableViewCell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeableTableViewCell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C659CD8020F7697A00A73C03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C659CD8720F7697B00A73C03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C659CD8A20F7697B00A73C03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 		C659CD7420F7697A00A73C03 = {
 			isa = PBXGroup;
 			children = (
-				C659CD7F20F7697A00A73C03 /* swipeable-cell-actions */,
+				C659CD7F20F7697A00A73C03 /* SwipeableTableViewCell */,
 				C659CD7E20F7697A00A73C03 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,12 +56,12 @@
 		C659CD7E20F7697A00A73C03 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C659CD7D20F7697A00A73C03 /* swipeable-cell-actions.app */,
+				C659CD7D20F7697A00A73C03 /* SwipeableTableViewCell.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C659CD7F20F7697A00A73C03 /* swipeable-cell-actions */ = {
+		C659CD7F20F7697A00A73C03 /* SwipeableTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				C659CD8020F7697A00A73C03 /* AppDelegate.swift */,
@@ -76,15 +76,15 @@
 				C659CD8C20F7697B00A73C03 /* Info.plist */,
 				C659CDAD20F8B09F00A73C03 /* Fonts */,
 			);
-			path = "swipeable-cell-actions";
+			path = SwipeableTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C659CD7C20F7697A00A73C03 /* swipeable-cell-actions */ = {
+		C659CD7C20F7697A00A73C03 /* SwipeableTableViewCell */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C659CD8F20F7697B00A73C03 /* Build configuration list for PBXNativeTarget "swipeable-cell-actions" */;
+			buildConfigurationList = C659CD8F20F7697B00A73C03 /* Build configuration list for PBXNativeTarget "SwipeableTableViewCell" */;
 			buildPhases = (
 				C659CD7920F7697A00A73C03 /* Sources */,
 				C659CD7A20F7697A00A73C03 /* Frameworks */,
@@ -94,9 +94,9 @@
 			);
 			dependencies = (
 			);
-			name = "swipeable-cell-actions";
+			name = SwipeableTableViewCell;
 			productName = "swipeable-cell-actions";
-			productReference = C659CD7D20F7697A00A73C03 /* swipeable-cell-actions.app */;
+			productReference = C659CD7D20F7697A00A73C03 /* SwipeableTableViewCell.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -114,7 +114,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C659CD7820F7697A00A73C03 /* Build configuration list for PBXProject "swipeable-cell-actions" */;
+			buildConfigurationList = C659CD7820F7697A00A73C03 /* Build configuration list for PBXProject "SwipeableTableViewCell" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -127,7 +127,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C659CD7C20F7697A00A73C03 /* swipeable-cell-actions */,
+				C659CD7C20F7697A00A73C03 /* SwipeableTableViewCell */,
 			);
 		};
 /* End PBXProject section */
@@ -294,12 +294,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = WDE7KVBJBN;
-				INFOPLIST_FILE = "swipeable-cell-actions/Info.plist";
+				INFOPLIST_FILE = SwipeableTableViewCell/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.10clouds.labs.swipeable-cell-actions";
+				PRODUCT_BUNDLE_IDENTIFIER = com.10clouds.labs.SwipeableTableViewCell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6a195d68-4d16-4675-89d8-ca711e16d4e4";
 				PROVISIONING_PROFILE_SPECIFIER = "10c-wildcard-development";
@@ -314,12 +314,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "swipeable-cell-actions/Info.plist";
+				INFOPLIST_FILE = SwipeableTableViewCell/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.10clouds.labs.swipeable-cell-actions";
+				PRODUCT_BUNDLE_IDENTIFIER = com.10clouds.labs.SwipeableTableViewCell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -330,7 +330,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C659CD7820F7697A00A73C03 /* Build configuration list for PBXProject "swipeable-cell-actions" */ = {
+		C659CD7820F7697A00A73C03 /* Build configuration list for PBXProject "SwipeableTableViewCell" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C659CD8D20F7697B00A73C03 /* Debug */,
@@ -339,7 +339,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C659CD8F20F7697B00A73C03 /* Build configuration list for PBXNativeTarget "swipeable-cell-actions" */ = {
+		C659CD8F20F7697B00A73C03 /* Build configuration list for PBXNativeTarget "SwipeableTableViewCell" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C659CD9020F7697B00A73C03 /* Debug */,

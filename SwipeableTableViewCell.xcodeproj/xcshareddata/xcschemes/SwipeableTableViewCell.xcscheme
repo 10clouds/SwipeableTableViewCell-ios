@@ -14,9 +14,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C659CD7C20F7697A00A73C03"
-               BuildableName = "swipeable-cell-actions.app"
-               BlueprintName = "swipeable-cell-actions"
-               ReferencedContainer = "container:swipeable-cell-actions.xcodeproj">
+               BuildableName = "SwipeableTableViewCell.app"
+               BlueprintName = "SwipeableTableViewCell"
+               ReferencedContainer = "container:SwipeableTableViewCell.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,9 +46,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C659CD7C20F7697A00A73C03"
-            BuildableName = "swipeable-cell-actions.app"
-            BlueprintName = "swipeable-cell-actions"
-            ReferencedContainer = "container:swipeable-cell-actions.xcodeproj">
+            BuildableName = "SwipeableTableViewCell.app"
+            BlueprintName = "SwipeableTableViewCell"
+            ReferencedContainer = "container:SwipeableTableViewCell.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
