@@ -8,6 +8,12 @@ import UIKit
 
 open class SwipeableTableViewCell: UITableViewCell, UIScrollViewDelegate {
 
+    private struct Constants {
+        static let buttonDimension: CGFloat = 42
+        static let coralPink = UIColor(red: 255 / 255.0, green: 93 / 255.0, blue: 115 / 255.0, alpha: 1)
+        static let periwinkle = UIColor(red: 119 / 255.0, green: 132 / 255.0, blue: 255 / 255.0, alpha: 1)
+    }
+
     // MARK: - Properties
 
     lazy var scrollViewContentView: UIView = {
@@ -15,6 +21,36 @@ open class SwipeableTableViewCell: UITableViewCell, UIScrollViewDelegate {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+
+    var primaryButtonBackgroundColor: UIColor? {
+        get { return primaryButton.backgroundColor }
+        set { primaryButton.backgroundColor = newValue }
+    }
+
+    var primaryButtonTintColor: UIColor? {
+        get { return primaryButton.tintColor }
+        set { primaryButton.tintColor = newValue }
+    }
+
+    var primaryButtonImage: UIImage? {
+        get { return primaryButton.image(for: .normal) }
+        set { primaryButton.setImage(newValue, for: .normal) }
+    }
+
+    var secondaryButtonBackgroundColor: UIColor? {
+        get { return secondaryButton.backgroundColor }
+        set { secondaryButton.backgroundColor = newValue }
+    }
+
+    var secondaryButtonTintColor: UIColor? {
+        get { return secondaryButton.tintColor }
+        set { secondaryButton.tintColor = newValue }
+    }
+
+    var secondaryButtonImage: UIImage? {
+        get { return secondaryButton.image(for: .normal) }
+        set { secondaryButton.setImage(newValue, for: .normal) }
+    }
 
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView(frame: .zero)
@@ -28,38 +64,34 @@ open class SwipeableTableViewCell: UITableViewCell, UIScrollViewDelegate {
         return view
     }()
 
-    private lazy var deleteButton: Button = {
+    private lazy var primaryButton: Button = {
         let view = Button(type: .system)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isHidden = true
-        view.setImage(UIImage(named: "trash"), for: .normal)
         view.imageEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
         view.tintColor = UIColor.white
-        view.backgroundColor = UIColor(named: "coralPinkColor")
-        view.layer.cornerRadius = self.buttonDimension / 2
+        view.backgroundColor = Constants.coralPink
+        view.layer.cornerRadius = Constants.buttonDimension / 2
         view.clipsToBounds = true
         return view
     }()
 
-    private lazy var featuredButton: Button = {
+    private lazy var secondaryButton: Button = {
         let view = Button(type: .system)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isHidden = true
-        view.setImage(UIImage(named: "star"), for: .normal)
         view.imageEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
         view.tintColor = UIColor.white
-        view.backgroundColor = UIColor(named: "periwinkleColor")
-        view.layer.cornerRadius = self.buttonDimension / 2
+        view.backgroundColor = Constants.periwinkle
+        view.layer.cornerRadius = Constants.buttonDimension / 2
         view.clipsToBounds = true
         return view
     }()
 
-    private let buttonDimension: CGFloat = 42
-
-    private var deleteButtonTrailingConstraint: NSLayoutConstraint!
-    private var deleteButtonHeightConstraint: NSLayoutConstraint!
-    private var featuredButtonTrailingConstraint: NSLayoutConstraint!
-    private var featuredButtonHeightConstraint: NSLayoutConstraint!
+    private var primaryButtonTrailingConstraint: NSLayoutConstraint!
+    private var primaryButtonHeightConstraint: NSLayoutConstraint!
+    private var secondaryButtonTrailingConstraint: NSLayoutConstraint!
+    private var secondaryButtonHeightConstraint: NSLayoutConstraint!
 
     // MARK: - Initialization
 
@@ -111,28 +143,28 @@ open class SwipeableTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
 
     private func layoutButtons() {
-        contentView.addSubview(featuredButton)
-        contentView.addSubview(deleteButton)
+        contentView.addSubview(secondaryButton)
+        contentView.addSubview(primaryButton)
 
-        deleteButtonTrailingConstraint = deleteButton.trailingAnchor.constraint(
+        primaryButtonTrailingConstraint = primaryButton.trailingAnchor.constraint(
             equalTo: contentView.trailingAnchor, constant: -16
         )
-        deleteButtonHeightConstraint = deleteButton.heightAnchor.constraint(equalToConstant: 42)
-        featuredButtonTrailingConstraint = featuredButton.trailingAnchor.constraint(
-            equalTo: deleteButton.trailingAnchor, constant: -22 - buttonDimension
+        primaryButtonHeightConstraint = primaryButton.heightAnchor.constraint(equalToConstant: 42)
+        secondaryButtonTrailingConstraint = secondaryButton.trailingAnchor.constraint(
+            equalTo: primaryButton.trailingAnchor, constant: -22 - Constants.buttonDimension
         )
-        featuredButtonHeightConstraint = featuredButton.heightAnchor.constraint(equalToConstant: 42)
+        secondaryButtonHeightConstraint = secondaryButton.heightAnchor.constraint(equalToConstant: 42)
 
         let constraints: [NSLayoutConstraint] = [
-            deleteButtonTrailingConstraint,
-            deleteButtonHeightConstraint,
-            deleteButton.widthAnchor.constraint(equalTo: deleteButton.heightAnchor, multiplier: 1),
-            deleteButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            primaryButtonTrailingConstraint,
+            primaryButtonHeightConstraint,
+            primaryButton.widthAnchor.constraint(equalTo: primaryButton.heightAnchor, multiplier: 1),
+            primaryButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
-            featuredButtonTrailingConstraint,
-            featuredButtonHeightConstraint,
-            featuredButton.widthAnchor.constraint(equalTo: featuredButton.heightAnchor, multiplier: 1),
-            featuredButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            secondaryButtonTrailingConstraint,
+            secondaryButtonHeightConstraint,
+            secondaryButton.widthAnchor.constraint(equalTo: secondaryButton.heightAnchor, multiplier: 1),
+            secondaryButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -142,23 +174,23 @@ open class SwipeableTableViewCell: UITableViewCell, UIScrollViewDelegate {
         switch progress {
         case (0.0..<0.75):
             let partProgress = progress / 0.75
-            deleteButtonTrailingConstraint.constant = -16 - (31 * partProgress)
-            deleteButtonHeightConstraint.constant = buttonDimension * 1.32
-            featuredButtonTrailingConstraint.constant = 0
-            deleteButton.imageView?.alpha = 0
+            primaryButtonTrailingConstraint.constant = -16 - (31 * partProgress)
+            primaryButtonHeightConstraint.constant = Constants.buttonDimension * 1.32
+            secondaryButtonTrailingConstraint.constant = 0
+            primaryButton.imageView?.alpha = 0
         case (0.75...1.0):
             let partProgress = (progress - 0.75) / 0.25
-            deleteButtonTrailingConstraint.constant = -16 - (31 * (1 - partProgress))
-            deleteButtonHeightConstraint.constant = buttonDimension * (0.32 * (1 - partProgress)) + buttonDimension
-            featuredButtonTrailingConstraint.constant = (-22 - buttonDimension) * partProgress
-            deleteButton.imageView?.alpha = partProgress
+            primaryButtonTrailingConstraint.constant = -16 - (31 * (1 - partProgress))
+            primaryButtonHeightConstraint.constant = Constants.buttonDimension * (0.32 * (1 - partProgress)) + Constants.buttonDimension
+            secondaryButtonTrailingConstraint.constant = (-22 - Constants.buttonDimension) * partProgress
+            primaryButton.imageView?.alpha = partProgress
         default: break
         }
 
-        deleteButton.layer.cornerRadius = deleteButtonHeightConstraint.constant / 2
-        featuredButtonHeightConstraint.constant = deleteButtonHeightConstraint.constant
-        featuredButton.layer.cornerRadius = deleteButton.layer.cornerRadius
-        featuredButton.imageView?.alpha = deleteButton.imageView?.alpha ?? 1
+        primaryButton.layer.cornerRadius = primaryButtonHeightConstraint.constant / 2
+        secondaryButtonHeightConstraint.constant = primaryButtonHeightConstraint.constant
+        secondaryButton.layer.cornerRadius = primaryButton.layer.cornerRadius
+        secondaryButton.imageView?.alpha = primaryButton.imageView?.alpha ?? 1
     }
 
     // MARK: - UIScrollViewDelegate
@@ -174,8 +206,8 @@ open class SwipeableTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        deleteButton.isHidden = scrollView.contentOffset.x < 8
-        featuredButton.isHidden = scrollView.contentOffset.x < 8
+        primaryButton.isHidden = scrollView.contentOffset.x < 8
+        secondaryButton.isHidden = scrollView.contentOffset.x < 8
         setAnimationState(for: scrollView.contentOffset.x / scrollView.contentInset.right)
     }
 }

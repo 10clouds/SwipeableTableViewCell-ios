@@ -58,6 +58,15 @@ final class TableViewCell: SwipeableTableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
         backgroundColor = UIColor(named: "backgroundColor")
+
+        primaryButtonTintColor = UIColor.white
+        primaryButtonBackgroundColor = UIColor(named: "coralPinkColor")
+        primaryButtonImage = UIImage(named: "trash")
+
+        secondaryButtonTintColor = UIColor.white
+        secondaryButtonBackgroundColor = UIColor(named: "periwinkleColor")
+        secondaryButtonImage = UIImage(named: "star")
+        
         layoutViews()
         setNormalColors()
     }
