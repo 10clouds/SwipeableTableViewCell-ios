@@ -22,4 +22,20 @@ final class Font {
     static func archivoRegular(_ size: CGFloat) -> UIFont {
         return UIFont(name: "Archivo-Regular", size: size)!
     }
+
+    static func sFProTextMedium(_ size: CGFloat) -> UIFont {
+        return UIFont(name: "SFProText-Medium", size: size)!
+    }
+
+    static func sFProTextRegular(_ size: CGFloat) -> UIFont {
+        return UIFont(name: "SFProText-Regular", size: size)!
+    }
+
+    static func sFProTextSemibold(_ size: CGFloat) -> UIFont {
+        return UIFont(name: "SFProText-Semibold", size: size)!
+    }
+
+    static func sFProDisplayBold(_ size: CGFloat) -> UIFont {
+        return UIFont(name: "SFProText-Semibold", size: size)!
+    }
 }

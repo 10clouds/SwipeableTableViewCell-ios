@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		349AA17F210734A2000409B1 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349AA17E210734A2000409B1 /* HeaderView.swift */; };
+		349AA1812109A430000409B1 /* ButtonConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349AA1802109A430000409B1 /* ButtonConnector.swift */; };
 		C659CD8120F7697A00A73C03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C659CD8020F7697A00A73C03 /* AppDelegate.swift */; };
 		C659CD8820F7697B00A73C03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C659CD8720F7697B00A73C03 /* Assets.xcassets */; };
 		C659CD8B20F7697B00A73C03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C659CD8920F7697B00A73C03 /* LaunchScreen.storyboard */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		349AA17E210734A2000409B1 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		349AA1802109A430000409B1 /* ButtonConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonConnector.swift; sourceTree = "<group>"; };
 		C659CD7D20F7697A00A73C03 /* SwipeableTableViewCell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeableTableViewCell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C659CD8020F7697A00A73C03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C659CD8720F7697B00A73C03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,9 +71,11 @@
 				C659CD8020F7697A00A73C03 /* AppDelegate.swift */,
 				E73620FF76B0FB733CFE07DB /* SwipeableTableViewCell.swift */,
 				E736222B07B6ABD9332EBC37 /* Button.swift */,
+				349AA1802109A430000409B1 /* ButtonConnector.swift */,
 				C659CD9320F769BC00A73C03 /* TableViewCell.swift */,
 				C659CD9820F8AF1100A73C03 /* TableViewModel.swift */,
 				C659CD9220F769BC00A73C03 /* TableViewController.swift */,
+				349AA17E210734A2000409B1 /* HeaderView.swift */,
 				C659CDAF20F8B26D00A73C03 /* Font.swift */,
 				C659CD8720F7697B00A73C03 /* Assets.xcassets */,
 				C659CD8920F7697B00A73C03 /* LaunchScreen.storyboard */,
@@ -153,7 +159,9 @@
 				C659CD9420F769BC00A73C03 /* TableViewController.swift in Sources */,
 				C659CDB020F8B26D00A73C03 /* Font.swift in Sources */,
 				C659CD9520F769BC00A73C03 /* TableViewCell.swift in Sources */,
+				349AA1812109A430000409B1 /* ButtonConnector.swift in Sources */,
 				C659CD8120F7697A00A73C03 /* AppDelegate.swift in Sources */,
+				349AA17F210734A2000409B1 /* HeaderView.swift in Sources */,
 				C659CD9920F8AF1100A73C03 /* TableViewModel.swift in Sources */,
 				E7362BF6AB068F4227F489BC /* SwipeableTableViewCell.swift in Sources */,
 				E73621DDE7B4BDEC52B64286 /* Button.swift in Sources */,
@@ -292,6 +300,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = WDE7KVBJBN;
 				INFOPLIST_FILE = SwipeableTableViewCell/Info.plist;
@@ -301,7 +310,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.10clouds.labs.SwipeableTableViewCell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6a195d68-4d16-4675-89d8-ca711e16d4e4";
+				PROVISIONING_PROFILE = "4c7a020c-6cff-4334-8c49-f7d967174ac3";
 				PROVISIONING_PROFILE_SPECIFIER = "10c-wildcard-development";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

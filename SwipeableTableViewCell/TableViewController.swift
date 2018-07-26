@@ -12,12 +12,18 @@ final class TableViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = UIColor(named: "backgroundColor")
+        tableView.backgroundColor = UIColor(named: "darkGreyColor")
         tableView.register(TableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
         return tableView
+    }()
+
+    private lazy var headerView: HeaderView = {
+        let view = HeaderView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
 
     private lazy var viewModel = TableViewModel()
@@ -26,42 +32,33 @@ final class TableViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "backgroundColor")
-        setupNavigationBar()
+        view.backgroundColor = UIColor(named: "darkGreyColor")
         layoutViews()
     }
 
     // MARK: - Private
 
-    private func setupNavigationBar() {
-        title = "Inbox (47)"
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedStringKey.foregroundColor: UIColor.white,
-            NSAttributedStringKey.font: Font.archivoBold(16)
-        ]
-
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: #imageLiteral(resourceName: "arrow"),
-            style: .plain,
-            target: nil,
-            action: nil
-        )
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: #imageLiteral(resourceName: "hamburger"),
-            style: .plain,
-            target: nil,
-            action: nil
-        )
+    private func layoutViews() {
+        layoutHeaderView()
+        layoutTableView()
     }
 
-    private func layoutViews() {
+    private func layoutHeaderView() {
+        view.addSubview(headerView)
+        let constraints = [
+            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            headerView.heightAnchor.constraint(equalToConstant: 128)
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
+
+    private func layoutTableView() {
         view.addSubview(tableView)
         let constraints = [
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 13),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ]
@@ -85,14 +82,13 @@ extension TableViewController: UITableViewDataSource {
         cell.nameLabel.text = viewModel.name
         cell.titleLabel.text = viewModel.title
         cell.messageLabel.text = viewModel.fragment
-        cell.dateLabel.text = viewModel.date
         return cell
     }
 }
 
 extension TableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 86
+        return 106
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
