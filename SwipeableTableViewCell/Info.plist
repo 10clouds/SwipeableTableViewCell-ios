@@ -22,6 +22,10 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Fonts/SF-Pro-Text-Semibold.otf</string>
+		<string>Fonts/SF-Pro-Text-Regular.otf</string>
+		<string>Fonts/SF-Pro-Text-Medium.otf</string>
+		<string>Fonts/SF-Pro-Display-Bold.otf</string>
 		<string>Fonts/Archivo-SemiBoldItalic.ttf</string>
 		<string>Fonts/Archivo-SemiBold.ttf</string>
 		<string>Fonts/Archivo-Regular.ttf</string>

@@ -88,10 +88,20 @@ open class SwipeableTableViewCell: UITableViewCell, UIScrollViewDelegate {
         return view
     }()
 
+    private lazy var buttonConnector: ButtonConnector = {
+        let view = ButtonConnector(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
+        view.backgroundColor = UIColor(named: "mediumGreyColor")
+        view.clipsToBounds = true
+        return view
+    }()
+
     private var primaryButtonTrailingConstraint: NSLayoutConstraint!
     private var primaryButtonHeightConstraint: NSLayoutConstraint!
     private var secondaryButtonTrailingConstraint: NSLayoutConstraint!
     private var secondaryButtonHeightConstraint: NSLayoutConstraint!
+    private var buttonConnectorWidthConstraint: NSLayoutConstraint!
 
     // MARK: - Initialization
 
@@ -143,6 +153,7 @@ open class SwipeableTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
 
     private func layoutButtons() {
+        contentView.addSubview(buttonConnector)
         contentView.addSubview(secondaryButton)
         contentView.addSubview(primaryButton)
 
@@ -151,9 +162,10 @@ open class SwipeableTableViewCell: UITableViewCell, UIScrollViewDelegate {
         )
         primaryButtonHeightConstraint = primaryButton.heightAnchor.constraint(equalToConstant: 42)
         secondaryButtonTrailingConstraint = secondaryButton.trailingAnchor.constraint(
-            equalTo: primaryButton.trailingAnchor, constant: -22 - Constants.buttonDimension
+            equalTo: buttonConnector.leadingAnchor, constant: 22 + Constants.buttonDimension
         )
         secondaryButtonHeightConstraint = secondaryButton.heightAnchor.constraint(equalToConstant: 42)
+        buttonConnectorWidthConstraint = buttonConnector.widthAnchor.constraint(equalToConstant: 32)
 
         let constraints: [NSLayoutConstraint] = [
             primaryButtonTrailingConstraint,
@@ -164,7 +176,12 @@ open class SwipeableTableViewCell: UITableViewCell, UIScrollViewDelegate {
             secondaryButtonTrailingConstraint,
             secondaryButtonHeightConstraint,
             secondaryButton.widthAnchor.constraint(equalTo: secondaryButton.heightAnchor, multiplier: 1),
-            secondaryButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            secondaryButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+
+            buttonConnector.heightAnchor.constraint(equalToConstant: 15),
+            buttonConnector.trailingAnchor.constraint(equalTo: primaryButton.leadingAnchor, constant: 5),
+            buttonConnector.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            buttonConnectorWidthConstraint
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -172,18 +189,21 @@ open class SwipeableTableViewCell: UITableViewCell, UIScrollViewDelegate {
     private func setAnimationState(for progress: CGFloat) {
         let progress = min(max(progress, 0), 1)
         switch progress {
-        case (0.0..<0.75):
-            let partProgress = progress / 0.75
+        case (0.0..<0.60):
+            let partProgress = progress / 0.6
             primaryButtonTrailingConstraint.constant = -16 - (31 * partProgress)
             primaryButtonHeightConstraint.constant = Constants.buttonDimension * 1.32
-            secondaryButtonTrailingConstraint.constant = 0
+            secondaryButtonTrailingConstraint.constant = -Constants.buttonDimension
             primaryButton.imageView?.alpha = 0
-        case (0.75...1.0):
-            let partProgress = (progress - 0.75) / 0.25
+            buttonConnectorWidthConstraint.constant = 0
+        case (0.60...1.0):
+            let partProgress = (progress - 0.6) / 0.4
             primaryButtonTrailingConstraint.constant = -16 - (31 * (1 - partProgress))
             primaryButtonHeightConstraint.constant = Constants.buttonDimension * (0.32 * (1 - partProgress)) + Constants.buttonDimension
-            secondaryButtonTrailingConstraint.constant = (-22 - Constants.buttonDimension) * partProgress
+            buttonConnectorWidthConstraint.constant =  32 * partProgress
+            secondaryButtonTrailingConstraint.constant = 5 * partProgress
             primaryButton.imageView?.alpha = partProgress
+            buttonConnector.isHidden = partProgress == 1
         default: break
         }
 
@@ -206,8 +226,10 @@ open class SwipeableTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let contentoff = scrollView.contentOffset.x
         primaryButton.isHidden = scrollView.contentOffset.x < 8
         secondaryButton.isHidden = scrollView.contentOffset.x < 8
+        buttonConnector.isHidden = scrollView.contentOffset.x < 8
         setAnimationState(for: scrollView.contentOffset.x / scrollView.contentInset.right)
     }
 }
