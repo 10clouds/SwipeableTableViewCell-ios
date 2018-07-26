@@ -85,20 +85,22 @@ final class TableViewCell: SwipeableTableViewCell {
 
     private func layoutAvatarImageView() {
         let constraints = [
-            avatarImageView.leadingAnchor.constraint(equalTo: scrollViewContentView.leadingAnchor, constant: 16),
-            avatarImageView.topAnchor.constraint(equalTo: elementsContainerView.topAnchor),
-            avatarImageView.widthAnchor.constraint(equalTo: avatarImageView.heightAnchor, multiplier: 1),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 32)
+            elementsContainerView.leadingAnchor.constraint(equalTo: scrollViewContentView.leadingAnchor),
+            elementsContainerView.topAnchor.constraint(equalTo: scrollViewContentView.topAnchor, constant: 13),
+            elementsContainerView.trailingAnchor.constraint(equalTo: scrollViewContentView.trailingAnchor, constant: -16),
+            elementsContainerView.bottomAnchor.constraint(equalTo: scrollViewContentView.bottomAnchor, constant: -13)
         ]
         NSLayoutConstraint.activate(constraints)
     }
 
-    private func layoutElementsContainerView() {
+    private func layoutAvatarImageView() {
+        scrollViewContentView.addSubview(avatarImageView)
         let constraints = [
-            elementsContainerView.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 8),
-            elementsContainerView.topAnchor.constraint(equalTo: scrollViewContentView.topAnchor, constant: 13),
-            elementsContainerView.trailingAnchor.constraint(equalTo: scrollViewContentView.trailingAnchor, constant: -16),
-            elementsContainerView.bottomAnchor.constraint(equalTo: scrollViewContentView.bottomAnchor, constant: -13)
+            avatarImageView.leadingAnchor.constraint(equalTo: scrollViewContentView.leadingAnchor, constant: 16),
+            avatarImageView.trailingAnchor.constraint(equalTo: elementsContainerView.leadingAnchor, constant: -8),
+            avatarImageView.topAnchor.constraint(equalTo: elementsContainerView.topAnchor),
+            avatarImageView.widthAnchor.constraint(equalTo: avatarImageView.heightAnchor, multiplier: 1),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 45)
         ]
         NSLayoutConstraint.activate(constraints)
     }
