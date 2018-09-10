@@ -1,0 +1,16 @@
+PODS:
+  - SwipeableTableViewCell (0.1.0)
+
+DEPENDENCIES:
+  - SwipeableTableViewCell (from `../`)
+
+EXTERNAL SOURCES:
+  SwipeableTableViewCell:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SwipeableTableViewCell: c234202eb517a7fcde97f99ab2f401906e3d2b0e
+
+PODFILE CHECKSUM: aed93b56deeb56b558530222f935a3de2db5689a
+
+COCOAPODS: 1.5.3

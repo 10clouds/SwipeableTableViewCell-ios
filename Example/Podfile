@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'SwipeableTableViewCell_Example' do
+  pod 'SwipeableTableViewCell', :path => '../'
+
+  target 'SwipeableTableViewCell_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

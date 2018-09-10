@@ -1,0 +1,6 @@
+framework module SwipeableTableViewCell {
+  umbrella header "SwipeableTableViewCell-umbrella.h"
+
+  export *
+  module * { export * }
+}
