@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
-		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
-		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		66C286C72146C14F00A7B735 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C286C12146C14F00A7B735 /* Font.swift */; };
+		66C286C82146C14F00A7B735 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C286C22146C14F00A7B735 /* TableViewController.swift */; };
+		66C286C92146C14F00A7B735 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C286C32146C14F00A7B735 /* Colors.swift */; };
+		66C286CA2146C14F00A7B735 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C286C42146C14F00A7B735 /* HeaderView.swift */; };
+		66C286CB2146C14F00A7B735 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C286C52146C14F00A7B735 /* TableViewCell.swift */; };
+		66C286CC2146C14F00A7B735 /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C286C62146C14F00A7B735 /* TableViewModel.swift */; };
+		66C286CE2146C15B00A7B735 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66C286CD2146C15B00A7B735 /* Images.xcassets */; };
 		B150F742DF5EA184D1B9D85B /* Pods_SwipeableTableViewCell_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68297CC73FCCAF0991D45CAA /* Pods_SwipeableTableViewCell_Tests.framework */; };
 		F764652A9870BB48EC48BB0E /* Pods_SwipeableTableViewCell_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA44C36116A27798C7B29FA /* Pods_SwipeableTableViewCell_Example.framework */; };
 /* End PBXBuildFile section */
@@ -34,19 +38,23 @@
 		607FACD01AFB9204008FA782 /* SwipeableTableViewCell_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeableTableViewCell_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* SwipeableTableViewCell_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwipeableTableViewCell_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		66C286C12146C14F00A7B735 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		66C286C22146C14F00A7B735 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		66C286C32146C14F00A7B735 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		66C286C42146C14F00A7B735 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		66C286C52146C14F00A7B735 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		66C286C62146C14F00A7B735 /* TableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewModel.swift; sourceTree = "<group>"; };
+		66C286CD2146C15B00A7B735 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		68297CC73FCCAF0991D45CAA /* Pods_SwipeableTableViewCell_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwipeableTableViewCell_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7008A0F4FB2C7A4B19D96A07 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		7008A0F4FB2C7A4B19D96A07 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		AAA44C36116A27798C7B29FA /* Pods_SwipeableTableViewCell_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwipeableTableViewCell_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C26776A2BACEAD54D3197929 /* Pods-SwipeableTableViewCell_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwipeableTableViewCell_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwipeableTableViewCell_Example/Pods-SwipeableTableViewCell_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		CCE7A50249C69AAE6348212B /* SwipeableTableViewCell.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = SwipeableTableViewCell.podspec; path = ../SwipeableTableViewCell.podspec; sourceTree = "<group>"; };
-		E05BCC64FEA3EF22524709B0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		CCE7A50249C69AAE6348212B /* SwipeableTableViewCell.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SwipeableTableViewCell.podspec; path = ../SwipeableTableViewCell.podspec; sourceTree = "<group>"; };
+		E05BCC64FEA3EF22524709B0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,10 +121,12 @@
 		607FACD21AFB9204008FA782 /* Example for SwipeableTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				66C286CF2146C1A000A7B735 /* Resources */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				607FACD91AFB9204008FA782 /* Main.storyboard */,
-				607FACDC1AFB9204008FA782 /* Images.xcassets */,
+				66C286C42146C14F00A7B735 /* HeaderView.swift */,
+				66C286C52146C14F00A7B735 /* TableViewCell.swift */,
+				66C286C22146C14F00A7B735 /* TableViewController.swift */,
+				66C286C62146C14F00A7B735 /* TableViewModel.swift */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
@@ -157,6 +167,16 @@
 				7008A0F4FB2C7A4B19D96A07 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		66C286CF2146C1A000A7B735 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				66C286C32146C14F00A7B735 /* Colors.swift */,
+				66C286C12146C14F00A7B735 /* Font.swift */,
+				66C286CD2146C15B00A7B735 /* Images.xcassets */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +233,7 @@
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						LastSwiftMigration = 0900;
+						ProvisioningStyle = Manual;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -245,9 +266,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
-				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				66C286CE2146C15B00A7B735 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,8 +342,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				66C286CA2146C14F00A7B735 /* HeaderView.swift in Sources */,
+				66C286C92146C14F00A7B735 /* Colors.swift in Sources */,
+				66C286CC2146C14F00A7B735 /* TableViewModel.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				66C286C72146C14F00A7B735 /* Font.swift in Sources */,
+				66C286CB2146C14F00A7B735 /* TableViewCell.swift in Sources */,
+				66C286C82146C14F00A7B735 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,14 +371,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		607FACD91AFB9204008FA782 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				607FACDA1AFB9204008FA782 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		607FACDE1AFB9204008FA782 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -410,7 +427,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -456,7 +473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -469,11 +486,15 @@
 			baseConfigurationReference = C26776A2BACEAD54D3197929 /* Pods-SwipeableTableViewCell_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SwipeableTableViewCell/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -484,11 +505,15 @@
 			baseConfigurationReference = 269524CF3B27CD54189266F1 /* Pods-SwipeableTableViewCell_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SwipeableTableViewCell/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};

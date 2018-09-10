@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SwipeableTableViewCell: c234202eb517a7fcde97f99ab2f401906e3d2b0e
+  SwipeableTableViewCell: 0044ba3f8b5cd83cd2bfb3a3f119ab55e238fec4
 
 PODFILE CHECKSUM: aed93b56deeb56b558530222f935a3de2db5689a
 
