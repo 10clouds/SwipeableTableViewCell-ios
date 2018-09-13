@@ -1,6 +1,5 @@
 # SwipeableTableViewCell
 
-[![CI Status](https://img.shields.io/travis/Hubert Kuczynski/SwipeableTableViewCell.svg?style=flat)](https://travis-ci.org/Hubert Kuczynski/SwipeableTableViewCell)
 [![Version](https://img.shields.io/cocoapods/v/SwipeableTableViewCell.svg?style=flat)](https://cocoapods.org/pods/SwipeableTableViewCell)
 [![License](https://img.shields.io/cocoapods/l/SwipeableTableViewCell.svg?style=flat)](https://cocoapods.org/pods/SwipeableTableViewCell)
 [![Platform](https://img.shields.io/cocoapods/p/SwipeableTableViewCell.svg?style=flat)](https://cocoapods.org/pods/SwipeableTableViewCell)
@@ -10,6 +9,8 @@
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
+- iOS 10
+- Swift 4.1
 
 ## Installation
 
@@ -20,9 +21,13 @@ it, simply add the following line to your Podfile:
 pod 'SwipeableTableViewCell'
 ```
 
-## Author
+## Usage
+To use it, simply subclass the `SwipeableTableViewCell`.
 
-Hubert Kuczynski, hubert.kuczynski@10clouds.com
+## Authors
+
+Kamil Powałowski, kamil.powalowski@10clouds.com  
+Hubert Kuczyński, hubert.kuczynski@10clouds.com
 
 ## License
 
