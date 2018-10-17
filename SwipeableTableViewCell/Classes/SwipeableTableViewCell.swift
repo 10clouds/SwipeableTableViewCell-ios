@@ -38,9 +38,15 @@ open class SwipeableTableViewCell: UITableViewCell {
         return view
     }()
 
-    public var primaryButtonBackgroundColor: UIColor? {
+    open var onSlide: ((CGFloat) -> Void)?
+
+    public var primaryButtonBackgroundColor: UIColor!
+    {
         get { return primaryButton.backgroundColor }
-        set { primaryButton.backgroundColor = newValue }
+        set { primaryButton.backgroundColor = newValue
+            buttonConnector.shapeColor = newValue
+            primaryColor = newValue
+        }
     }
 
     public var primaryButtonTintColor: UIColor? {
@@ -53,13 +59,15 @@ open class SwipeableTableViewCell: UITableViewCell {
         set { primaryButton.setImage(newValue, for: .normal) }
     }
 
-    public var secondaryButtonBackgroundColor: UIColor? {
+    public var secondaryButtonBackgroundColor: UIColor!
+    {
         get { return secondaryButton.backgroundColor }
         set {
             secondaryButton.backgroundColor = newValue
-            buttonConnector.shapeColor = newValue
+            secondaryColor = newValue
         }
     }
+
 
     public var secondaryButtonTintColor: UIColor? {
         get { return secondaryButton.tintColor }
@@ -127,6 +135,8 @@ open class SwipeableTableViewCell: UITableViewCell {
     private var startTime: CFTimeInterval?
     private var slideOutDuration: CFTimeInterval = 0.3
     private var slideOutCompletion: (() -> Void)?
+    private var primaryColor: UIColor?
+    private var secondaryColor: UIColor?
 
     // MARK: - Initialization
 
@@ -134,12 +144,14 @@ open class SwipeableTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layoutButtons()
         layoutScrollView()
+        setupSlide()
     }
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         layoutScrollView()
         layoutButtons()
+        setupSlide()
     }
 
     // MARK: - Public
@@ -259,6 +271,14 @@ open class SwipeableTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate(constraints)
     }
 
+    private func setupSlide() {
+        onSlide = { contentOffset in
+            self.secondaryButton.backgroundColor = contentOffset > 125
+                ? self.secondaryColor
+                : self.primaryColor
+        }
+    }
+
     private func setAnimationState(for progress: CGFloat) {
         let heightScale: CGFloat = 1.32
         let progress = min(max(progress, 0), 1)
@@ -314,7 +334,7 @@ extension SwipeableTableViewCell: UIScrollViewDelegate {
         _ scrollView: UIScrollView,
         withVelocity velocity: CGPoint,
         targetContentOffset: UnsafeMutablePointer<CGPoint>
-    ) {
+        ) {
         if scrollView.contentOffset.x > (scrollView.contentInset.right / 2) {
             targetContentOffset.pointee.x = scrollView.contentInset.right
         } else {
@@ -323,6 +343,7 @@ extension SwipeableTableViewCell: UIScrollViewDelegate {
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        onSlide?(scrollView.contentOffset.x)
         primaryButton.isHidden = scrollView.contentOffset.x < 8
         secondaryButton.isHidden = scrollView.contentOffset.x < 8
         buttonConnector.isHidden = scrollView.contentOffset.x < 8
