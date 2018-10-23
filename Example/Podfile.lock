@@ -1,5 +1,5 @@
 PODS:
-  - SwipeableTableViewCell (0.1.0)
+  - SwipeableTableViewCell (0.1.1)
 
 DEPENDENCIES:
   - SwipeableTableViewCell (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SwipeableTableViewCell: 0044ba3f8b5cd83cd2bfb3a3f119ab55e238fec4
+  SwipeableTableViewCell: 575f7191285f1484e0237638123de0af4c902bf6
 
 PODFILE CHECKSUM: aed93b56deeb56b558530222f935a3de2db5689a
 
