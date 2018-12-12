@@ -24,13 +24,21 @@ import UIKit
 
 final class TableViewController: UIViewController {
 
+    private struct ReuseIdentifiers{
+        static let cell = "cell"
+    }
+
     // MARK: - Properties
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = Colors.darkGrey
-        tableView.register(TableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.backgroundColor = .clear
+        tableView.register(TableViewCell.self, forCellReuseIdentifier: ReuseIdentifiers.cell)
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
@@ -40,6 +48,10 @@ final class TableViewController: UIViewController {
     private lazy var headerView: HeaderView = {
         let view = HeaderView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.shadowRadius = 200
+        view.layer.shadowColor = Colors.charcoalGrey.cgColor
+        view.layer.shadowOpacity = 1.0
+        view.clipsToBounds = false
         return view
     }()
 
@@ -49,8 +61,13 @@ final class TableViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Colors.darkGrey
+        view.backgroundColor = Colors.dark
         layoutViews()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        headerView.layer.shadowPath = UIBezierPath(rect: headerView.bounds.insetBy(dx: -100, dy: 0)).cgPath
     }
 
     // MARK: - Private
@@ -62,18 +79,10 @@ final class TableViewController: UIViewController {
 
     private func layoutHeaderView() {
         view.addSubview(headerView)
-        let topConstraint: NSLayoutConstraint = {
-            if #available(iOS 11, *) {
-                return headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
-            } else {
-                return headerView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor)
-            }
-        }()
         let constraints = [
-            topConstraint,
+            headerView.topAnchor.constraint(equalTo: view.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 128)
+            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -92,18 +101,18 @@ final class TableViewController: UIViewController {
 
 extension TableViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.cells.count
     }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
-        let viewModel = self.viewModel.cells[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: ReuseIdentifiers.cell, for: indexPath) as! TableViewCell
+        let viewModel = self.viewModel.cells[indexPath.section]
         cell.avatarImageView.image = UIImage(named: viewModel.imageName)
-        cell.nameLabel.text = viewModel.name + String(indexPath.row)
+        cell.nameLabel.text = viewModel.name + String(indexPath.section)
         cell.titleLabel.text = viewModel.title
         cell.messageLabel.text = viewModel.fragment
 
@@ -111,8 +120,14 @@ extension TableViewController: UITableViewDataSource {
             guard let `self` = self,
                 let indexPath = tableView.indexPath(for: cell)
                 else { return }
-            self.viewModel.cells.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .left)
+
+            self.viewModel.moveToEndCell(at: indexPath.section)
+            let deleteSections = IndexSet(integer: indexPath.section)
+            let insertSections = IndexSet(integer: self.viewModel.cells.count - 1)
+            tableView.beginUpdates()
+                tableView.deleteSections(deleteSections, with: .left)
+                tableView.insertSections(insertSections, with: .bottom)
+            tableView.endUpdates()
         }
 
         return cell
@@ -121,10 +136,26 @@ extension TableViewController: UITableViewDataSource {
 
 extension TableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 106
+        return 80
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ? 20 : 0
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 8
     }
 }
