@@ -63,8 +63,6 @@ final class TableViewCell: SwipeableTableViewCell {
     private lazy var elementsContainerView: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 4
-        view.clipsToBounds = true
         return view
     }()
 
@@ -73,15 +71,16 @@ final class TableViewCell: SwipeableTableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
-        backgroundColor = Colors.darkGrey
 
-        primaryButtonTintColor = UIColor.white
-        primaryButtonBackgroundColor = Colors.darkClaret
-        primaryButtonImage = UIImage(named: "trash")
+        horizontalMargin = 16
 
-        secondaryButtonTintColor = UIColor.white
-        secondaryButtonBackgroundColor = Colors.mediumGrey
-        secondaryButtonImage = UIImage(named: "star")
+        buttonTintColor = UIColor.white
+        buttonBackgroundColor = Colors.lightClaret
+        buttonImage = UIImage(named: "trash")
+
+        scrollViewContentView.layer.cornerRadius = 8
+        scrollViewContentView.layer.masksToBounds = true
+        scrollViewContentView.clipsToBounds = true
         
         layoutViews()
         setColors()
@@ -94,14 +93,14 @@ final class TableViewCell: SwipeableTableViewCell {
     // MARK: - Private
 
     private func layoutViews() {
-        contentView.insertSubview(avatarImageView, at: 0)
         scrollViewContentView.addSubview(elementsContainerView)
+        scrollViewContentView.addSubview(avatarImageView)
         elementsContainerView.addSubview(nameLabel)
         elementsContainerView.addSubview(titleLabel)
         elementsContainerView.addSubview(messageLabel)
 
-        layoutAvatarImageView()
         layoutElementsContainerView()
+        layoutAvatarImageView()
         layoutNameLabel()
         layoutTitleLabel()
         layoutMessageLabel()
@@ -109,8 +108,10 @@ final class TableViewCell: SwipeableTableViewCell {
 
     private func layoutAvatarImageView() {
         let constraints = [
-            avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.horizontalMargin),
-            avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.verticalMargin),
+            avatarImageView.leadingAnchor.constraint(equalTo: scrollViewContentView.leadingAnchor, constant: Constants.horizontalMargin),
+            avatarImageView.topAnchor.constraint(greaterThanOrEqualTo: scrollViewContentView.topAnchor, constant: Constants.verticalMargin),
+            avatarImageView.bottomAnchor.constraint(lessThanOrEqualTo: scrollViewContentView.bottomAnchor, constant: -Constants.verticalMargin),
+            avatarImageView.centerYAnchor.constraint(equalTo: scrollViewContentView.centerYAnchor),
             avatarImageView.widthAnchor.constraint(equalTo: avatarImageView.heightAnchor, multiplier: 1),
             avatarImageView.heightAnchor.constraint(equalToConstant: Constants.avatarSize)
         ]
@@ -119,7 +120,7 @@ final class TableViewCell: SwipeableTableViewCell {
 
     private func layoutElementsContainerView() {
         let constraints = [
-            elementsContainerView.leadingAnchor.constraint(equalTo: scrollViewContentView.leadingAnchor, constant: Constants.avatarSize + 1.5 * Constants.horizontalMargin),
+            elementsContainerView.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: Constants.horizontalMargin),
             elementsContainerView.topAnchor.constraint(equalTo: scrollViewContentView.topAnchor, constant: Constants.verticalMargin),
             elementsContainerView.trailingAnchor.constraint(equalTo: scrollViewContentView.trailingAnchor, constant: -Constants.horizontalMargin),
             elementsContainerView.bottomAnchor.constraint(equalTo: scrollViewContentView.bottomAnchor, constant: -Constants.verticalMargin)
@@ -129,8 +130,8 @@ final class TableViewCell: SwipeableTableViewCell {
 
     private func layoutNameLabel() {
         let constraints = [
-            nameLabel.leadingAnchor.constraint(equalTo: elementsContainerView.leadingAnchor, constant: 18),
-            nameLabel.topAnchor.constraint(equalTo: elementsContainerView.topAnchor, constant: Constants.verticalMargin),
+            nameLabel.leadingAnchor.constraint(equalTo: elementsContainerView.leadingAnchor),
+            nameLabel.topAnchor.constraint(equalTo: elementsContainerView.topAnchor),
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -138,7 +139,7 @@ final class TableViewCell: SwipeableTableViewCell {
     private func layoutTitleLabel() {
         let constraints = [
             titleLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 10),
-            titleLabel.topAnchor.constraint(equalTo: elementsContainerView.topAnchor, constant: Constants.verticalMargin)
+            titleLabel.topAnchor.constraint(equalTo: elementsContainerView.topAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -147,15 +148,15 @@ final class TableViewCell: SwipeableTableViewCell {
         let constraints = [
             messageLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             messageLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 15),
-            messageLabel.trailingAnchor.constraint(equalTo: elementsContainerView.trailingAnchor, constant: -9)
+            messageLabel.trailingAnchor.constraint(equalTo: elementsContainerView.trailingAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }
 
     private func setColors() {
-        elementsContainerView.backgroundColor = Colors.mediumDarkGrey
-        nameLabel.textColor = Colors.whiteGray
+        scrollViewContentView.backgroundColor = Colors.charcoalGreyTwo
+        nameLabel.textColor = Colors.white
         titleLabel.textColor = Colors.lightClaret
-        messageLabel.textColor = Colors.lightGray
+        messageLabel.textColor = Colors.lightPinkGray
     }
 }

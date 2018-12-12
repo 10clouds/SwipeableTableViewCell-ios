@@ -25,65 +25,60 @@ import UIKit
 open class SwipeableTableViewCell: UITableViewCell {
 
     private struct Constants {
-        static let buttonDimension: CGFloat = 42
-        static let buttonConnectorHorizontalOffset: CGFloat = 7
-        static let primaryButtonTrailingOffset: CGFloat = -16
+        static let buttonDimension: CGFloat = 62
+        static let primaryButtonTrailingOffset: CGFloat = 16
+        static let contentOffsetMovementDivider: CGFloat = 2
+        static var maxOffset: CGFloat {
+            return (2 * Constants.primaryButtonTrailingOffset + Constants.buttonDimension)
+        }
+        static var disconnectPoint: CGFloat {
+            return Constants.buttonDimension + Constants.primaryButtonTrailingOffset
+        }
     }
 
-    // MARK: - Properties
+    private enum SlideDestination {
+        case begin, end
+    }
 
-    public lazy var scrollViewContentView: UIView = {
-        let view = UIView()
+    // MARK: - Public Properties
+
+    open var horizontalMargin: CGFloat = 16 {
+        didSet {
+            updateMargins()
+        }
+    }
+
+    public lazy var scrollViewContentView: StretchyView = {
+        let view = StretchyView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.maxOffset = Constants.maxOffset
         return view
     }()
 
-    open var onSlide: ((CGFloat) -> Void)?
-
-    public var primaryButtonBackgroundColor: UIColor!
-    {
-        get { return primaryButton.backgroundColor }
-        set { primaryButton.backgroundColor = newValue
-            buttonConnector.shapeColor = newValue
-            primaryColor = newValue
-        }
+    public var buttonBackgroundColor: UIColor! {
+        get { return buttonActiveBackgroundColor }
+        set { buttonActiveBackgroundColor = newValue }
     }
 
-    public var primaryButtonTintColor: UIColor? {
-        get { return primaryButton.tintColor }
-        set { primaryButton.tintColor = newValue }
+    public var buttonTintColor: UIColor? {
+        get { return button.tintColor }
+        set { button.tintColor = newValue }
     }
 
-    public var primaryButtonImage: UIImage? {
-        get { return primaryButton.image(for: .normal) }
-        set { primaryButton.setImage(newValue, for: .normal) }
+    public var buttonTitle: String? {
+        get { return button.title(for: .normal) }
+        set { button.setTitle(newValue, for: .normal) }
     }
 
-    public var secondaryButtonBackgroundColor: UIColor!
-    {
-        get { return secondaryButton.backgroundColor }
-        set {
-            secondaryButton.backgroundColor = newValue
-            secondaryColor = newValue
-        }
-    }
-
-
-    public var secondaryButtonTintColor: UIColor? {
-        get { return secondaryButton.tintColor }
-        set { secondaryButton.tintColor = newValue }
-    }
-
-    public var secondaryButtonImage: UIImage? {
-        get { return secondaryButton.image(for: .normal) }
-        set { secondaryButton.setImage(newValue, for: .normal) }
+    public var buttonImage: UIImage? {
+        get { return button.image(for: .normal) }
+        set { button.setImage(newValue, for: .normal) }
     }
 
     /// An action performed on primary button tap
     public var onPrimaryButtonTap: (() -> Void)?
 
-    /// An action performed on secondary button tap
-    public var onSecondaryButtonTap: (() -> Void)?
+    // MARK: - Private Properties
 
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView(frame: .zero)
@@ -91,262 +86,222 @@ open class SwipeableTableViewCell: UITableViewCell {
         view.scrollsToTop = false
         view.showsHorizontalScrollIndicator = false
         view.showsVerticalScrollIndicator = false
-        view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 126)
+        view.contentInset.right = Constants.maxOffset * Constants.contentOffsetMovementDivider
         view.delegate = self
         view.isUserInteractionEnabled = false
         return view
     }()
 
-    private lazy var primaryButton: Button = {
-        let view = Button(type: .system)
+    private lazy var button: StretchyCircleButton = {
+        let view = StretchyCircleButton()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.isHidden = true
-        view.imageEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
         view.layer.cornerRadius = Constants.buttonDimension / 2
         view.clipsToBounds = true
         view.addTarget(self, action: #selector(handlePrimaryButtonTap), for: .touchUpInside)
         return view
     }()
 
-    private lazy var secondaryButton: Button = {
-        let view = Button(type: .system)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.isHidden = true
-        view.imageEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
-        view.layer.cornerRadius = Constants.buttonDimension / 2
-        view.clipsToBounds = true
-        view.addTarget(self, action: #selector(handleSecondaryButtonTap), for: .touchUpInside)
-        return view
-    }()
+    private var contentOffset: CGPoint {
+        let offset = scrollView.layer.presentation()?.bounds.origin ?? scrollView.contentOffset
+        let multiplier = 1.0 - 1.0 / Constants.contentOffsetMovementDivider
+        return CGPoint(x: offset.x * multiplier, y: offset.y * multiplier)
+    }
 
-    private lazy var buttonConnector: ButtonConnector = {
-        let view = ButtonConnector(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.isHidden = true
-        return view
-    }()
+    private var buttonActiveBackgroundColor: UIColor!
 
+    private var scrollViewContentViewLeadingConstraint: NSLayoutConstraint!
+    private var scrollViewContentViewTrailingConstraint: NSLayoutConstraint!
+    private var scrollViewContentViewWidthConstraint: NSLayoutConstraint!
     private var primaryButtonTrailingConstraint: NSLayoutConstraint!
-    private var primaryButtonHeightConstraint: NSLayoutConstraint!
-    private var secondaryButtonTrailingConstraint: NSLayoutConstraint!
-    private var secondaryButtonHeightConstraint: NSLayoutConstraint!
 
-    private var displayLink: CADisplayLink?
-    private var startTime: CFTimeInterval?
-    private var slideOutDuration: CFTimeInterval = 0.3
-    private var slideOutCompletion: (() -> Void)?
-    private var primaryColor: UIColor?
-    private var secondaryColor: UIColor?
+    private var slideDestination: SlideDestination = .begin
+    private var buttonScaleAnimationIsRunning = false
+
+    private var slideTargetPoint: CGPoint {
+        let velocity = scrollView.panGestureRecognizer.velocity(in: self)
+        let max = CGPoint(x: Constants.maxOffset * Constants.contentOffsetMovementDivider, y: 0)
+        if velocity.x > 0 {
+            return .zero
+        } else if velocity.x < 0 {
+            return max
+        } else {
+            return contentOffset.x > Constants.maxOffset / 2 ? max : .zero
+        }
+    }
 
     // MARK: - Initialization
 
     public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        layoutButtons()
-        layoutScrollView()
-        setupSlide()
+        setup()
     }
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        layoutScrollView()
-        layoutButtons()
-        setupSlide()
+        setup()
     }
 
-    // MARK: - Public
-
-    /// Animates sliding out of the screen.
-    func animateDelete(completion: (() -> Void)? = nil) {
-        slideOutCompletion = completion
-        displayLink = CADisplayLink(target: self, selector: #selector(handleSlideOut(displayLink:)))
-        startTime = CFAbsoluteTimeGetCurrent()
-        displayLink?.add(to: RunLoop.main, forMode: RunLoopMode.commonModes)
-    }
-
-    // MARK: Private functions
-
-    private func invalidateDisplayLink() {
-        displayLink?.invalidate()
-        displayLink = nil
-    }
-
-    @objc private func handleSlideOut(displayLink: CADisplayLink) {
-        guard let startTime = startTime else {
-            invalidateDisplayLink()
-            return
-        }
-        let percent = CGFloat(CFAbsoluteTimeGetCurrent() - startTime) / CGFloat(slideOutDuration)
-        if percent >= 0.99 {
-            invalidateDisplayLink()
-
-            slideOutCompletion?()
-            slideOutCompletion = nil
-            return
-        }
-        setJoinAnimationState(for: percent)
-    }
+    // MARK: Public functions
 
     open override func prepareForReuse() {
         super.prepareForReuse()
         scrollView.contentOffset = .zero
+        slideDestination = .begin
+        buttonScaleAnimationIsRunning = false
     }
 
-    // MARK: - Private
+    // MARK: Private functions
+
+    private func setup() {
+        addViews()
+        layoutViews()
+        backgroundColor = .clear
+
+        contentView.addGestureRecognizer(scrollView.panGestureRecognizer)
+        scrollView.panGestureRecognizer.addTarget(self, action: #selector(handlePan(_:)))
+    }
+
+    @objc private func handlePan(_ recognizer: UIPanGestureRecognizer) {
+        if recognizer.state == .ended {
+            startSlideAnimation(recognizer)
+        }
+    }
 
     @objc private func handlePrimaryButtonTap() {
         onPrimaryButtonTap?()
     }
 
-    @objc private func handleSecondaryButtonTap() {
-        onSecondaryButtonTap?()
+    private func startSlideAnimation(_ recognizer: UIPanGestureRecognizer) {
+        let shouldStretch = slideDestination == .end
+        let displayLink: CADisplayLink? = shouldStretch ? startDisplayLink() : nil
+
+        let originalDuration: CGFloat = shouldStretch ? 1.5 : 0.8
+        let duration = TimeInterval(
+            abs(contentOffset.x - slideTargetPoint.x) / Constants.maxOffset * originalDuration / Constants.contentOffsetMovementDivider
+        )
+
+        let springDamping: CGFloat = shouldStretch ? 0.8 : 0.5
+        let initialSpringVelocity: CGFloat = shouldStretch ? 0 : 1
+
+        UIView.animate(
+            withDuration: duration,
+            delay: 0,
+            usingSpringWithDamping: springDamping,
+            initialSpringVelocity: initialSpringVelocity,
+            options: .curveEaseIn,
+            animations: {
+                self.scrollView.setContentOffset(self.slideTargetPoint, animated: false)
+            }, completion: { _ in
+                self.buttonScaleAnimationIsRunning = false
+                displayLink?.invalidate()
+            }
+        )
+    }
+
+    private func startDisplayLink() -> CADisplayLink {
+        let displayLink = CADisplayLink(target: self, selector: #selector(handleDisplayLink(_:)))
+        displayLink.add(to: RunLoop.main, forMode: .defaultRunLoopMode)
+        return displayLink
+    }
+
+    @objc private func handleDisplayLink(_ displayLink: CADisplayLink) {
+        updateShape()
+
+        if contentOffset.x >= Constants.disconnectPoint && !buttonScaleAnimationIsRunning {
+            buttonScaleAnimationIsRunning = true
+            button.addScaleAnimation()
+        }
+    }
+
+    private func updateShape() {
+        guard slideDestination == .end else { return }
+
+        scrollViewContentView.move(by: contentOffset.x)
+
+        button.stretch(by: calulateCircleOffset(for: contentOffset.x))
+        button.imageView?.alpha = contentOffset.x > Constants.buttonDimension / 2 + Constants.primaryButtonTrailingOffset ? 1 : 0
+        button.backgroundColor = contentOffset.x > Constants.disconnectPoint ? buttonActiveBackgroundColor : scrollViewContentView.backgroundColor
+    }
+
+    private func calulateCircleOffset(for x: CGFloat) -> CGFloat {
+        return max(0, -0.05263 * x * x + 5.211 * x - 97.37)
+    }
+
+    private func updateSlideDestination() {
+        if contentOffset.x <= 5 {
+            slideDestination = .end
+        } else if contentOffset.x >= Constants.maxOffset - 5 {
+            slideDestination = .begin
+        }
+    }
+}
+
+extension SwipeableTableViewCell: UIScrollViewDelegate {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollViewContentView.transform = CGAffineTransform(
+            translationX: scrollView.contentOffset.x / Constants.contentOffsetMovementDivider,
+            y: scrollView.contentOffset.y / Constants.contentOffsetMovementDivider
+        )
+
+        updateSlideDestination()
+        updateShape()
+    }
+}
+
+extension SwipeableTableViewCell {
+    private func addViews() {
+        contentView.addSubview(button)
+        contentView.addSubview(scrollView)
+        scrollView.addSubview(scrollViewContentView)
+    }
+
+    private func layoutViews() {
+        layoutScrollView()
+        layoutButton()
+        updateMargins()
+    }
+
+    private func updateMargins() {
+        scrollViewContentViewLeadingConstraint.constant = horizontalMargin
+        scrollViewContentViewTrailingConstraint.constant = -horizontalMargin
+        scrollViewContentViewWidthConstraint.constant = -2 * horizontalMargin
+        primaryButtonTrailingConstraint.constant = -Constants.primaryButtonTrailingOffset - horizontalMargin
     }
 
     private func layoutScrollView() {
-        super.contentView.addSubview(scrollView)
-        super.contentView.addGestureRecognizer(scrollView.panGestureRecognizer)
-
-        scrollView.addSubview(scrollViewContentView)
-
         let scrollViewContentViewHeightConstraint = scrollViewContentView.widthAnchor
             .constraint(equalTo: scrollView.widthAnchor, multiplier: 1)
         scrollViewContentViewHeightConstraint.priority = .defaultLow
 
-        let constraints: [NSLayoutConstraint] = [
-            scrollView.leadingAnchor.constraint(equalTo: super.contentView.leadingAnchor),
-            scrollView.topAnchor.constraint(equalTo: super.contentView.topAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: super.contentView.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: super.contentView.bottomAnchor),
+        scrollViewContentViewLeadingConstraint = scrollViewContentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor)
+        scrollViewContentViewTrailingConstraint = scrollViewContentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor)
+        scrollViewContentViewWidthConstraint = scrollViewContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
 
-            scrollViewContentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+        let constraints: [NSLayoutConstraint] = [
+            scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            scrollView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             scrollViewContentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            scrollViewContentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             scrollViewContentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            scrollViewContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 1),
             scrollViewContentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 1),
+            scrollViewContentViewLeadingConstraint,
+            scrollViewContentViewTrailingConstraint,
+            scrollViewContentViewWidthConstraint,
             scrollViewContentViewHeightConstraint
         ]
         NSLayoutConstraint.activate(constraints)
     }
 
-    private func layoutButtons() {
-        contentView.addSubview(buttonConnector)
-        contentView.addSubview(secondaryButton)
-        contentView.addSubview(primaryButton)
-
-        primaryButtonTrailingConstraint = primaryButton.trailingAnchor.constraint(
-            equalTo: contentView.trailingAnchor, constant: Constants.primaryButtonTrailingOffset
-        )
-        primaryButtonHeightConstraint = primaryButton.heightAnchor.constraint(equalToConstant: Constants.buttonDimension)
-        secondaryButtonTrailingConstraint = secondaryButton.trailingAnchor.constraint(equalTo: primaryButton.trailingAnchor)
-
-        secondaryButtonHeightConstraint = secondaryButton.heightAnchor.constraint(equalToConstant: Constants.buttonDimension)
-
-        let buttonConnectorLeadingConstraint = buttonConnector.leadingAnchor
-            .constraint(equalTo: secondaryButton.trailingAnchor, constant: -Constants.buttonConnectorHorizontalOffset)
-
-        buttonConnectorLeadingConstraint.priority = UILayoutPriority.defaultLow
-
-        let buttonConnectorTrailingConstraint = buttonConnector.trailingAnchor
-            .constraint(equalTo: primaryButton.leadingAnchor, constant: Constants.buttonConnectorHorizontalOffset)
-
-        buttonConnectorTrailingConstraint.priority = UILayoutPriority.defaultLow
+    private func layoutButton() {
+        primaryButtonTrailingConstraint = button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
 
         let constraints: [NSLayoutConstraint] = [
             primaryButtonTrailingConstraint,
-            primaryButtonHeightConstraint,
-            primaryButton.widthAnchor.constraint(equalTo: primaryButton.heightAnchor, multiplier: 1),
-            primaryButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-
-            secondaryButtonTrailingConstraint,
-            secondaryButtonHeightConstraint,
-            secondaryButton.widthAnchor.constraint(equalTo: secondaryButton.heightAnchor, multiplier: 1),
-            secondaryButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-
-            buttonConnector.heightAnchor.constraint(equalToConstant: 15),
-            buttonConnector.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            buttonConnectorLeadingConstraint,
-            buttonConnectorTrailingConstraint
+            button.heightAnchor.constraint(equalToConstant: Constants.buttonDimension),
+            button.widthAnchor.constraint(equalTo: button.heightAnchor, multiplier: 1),
+            button.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
-    }
-
-    private func setupSlide() {
-        onSlide = { contentOffset in
-            self.secondaryButton.backgroundColor = contentOffset > 125
-                ? self.secondaryColor
-                : self.primaryColor
-        }
-    }
-
-    private func setAnimationState(for progress: CGFloat) {
-        let heightScale: CGFloat = 1.32
-        let progress = min(max(progress, 0), 1)
-        let partProgress = max(0, progress - 0.25) / 0.50
-
-        primaryButtonTrailingConstraint.constant = Constants.primaryButtonTrailingOffset
-            + (-2 * Constants.primaryButtonTrailingOffset + Constants.buttonDimension)
-            * max(1 - partProgress, 0)
-
-        switch progress {
-        case (0.0..<0.75):
-            primaryButtonHeightConstraint.constant = Constants.buttonDimension * heightScale
-            secondaryButtonHeightConstraint.constant = Constants.buttonDimension * heightScale
-            secondaryButtonTrailingConstraint.constant = 0
-            primaryButton.imageView?.alpha = 0
-        case (0.75...1.0):
-            let partProgress = (progress - 0.75) / 0.25
-            primaryButtonHeightConstraint.constant =  Constants.buttonDimension * (0.32 * (1 - partProgress)) + Constants.buttonDimension
-            secondaryButtonHeightConstraint.constant = primaryButtonHeightConstraint.constant
-            secondaryButtonTrailingConstraint.constant = (-22 - Constants.buttonDimension) * partProgress
-            primaryButton.imageView?.alpha = partProgress
-            buttonConnector.isHidden = partProgress == 1
-        default: break
-        }
-
-        primaryButton.layer.cornerRadius = primaryButtonHeightConstraint.constant / 2
-        secondaryButton.layer.cornerRadius = secondaryButtonHeightConstraint.constant / 2
-        secondaryButton.imageView?.alpha = primaryButton.imageView?.alpha ?? 1
-    }
-
-    private func setJoinAnimationState(for progress: CGFloat) {
-        let normalizedProgress = min(max(progress, 0), 1)
-        let progress = normalizedProgress * normalizedProgress * normalizedProgress
-
-        primaryButtonHeightConstraint.constant =  Constants.buttonDimension * (0.32 * progress) + Constants.buttonDimension
-        secondaryButtonHeightConstraint.constant = primaryButtonHeightConstraint.constant
-
-        let offset: CGFloat = 22
-
-        primaryButtonTrailingConstraint.constant = (offset / 2 - Constants.buttonDimension) * progress + Constants.primaryButtonTrailingOffset
-        secondaryButtonTrailingConstraint.constant = (-offset - Constants.buttonDimension) * (1 - progress)
-
-        primaryButton.imageView?.alpha = 1 - progress
-        buttonConnector.isHidden = progress == 0
-
-        primaryButton.layer.cornerRadius = primaryButtonHeightConstraint.constant / 2
-        secondaryButton.layer.cornerRadius = secondaryButtonHeightConstraint.constant / 2
-    }
-}
-
-extension SwipeableTableViewCell: UIScrollViewDelegate {
-    public func scrollViewWillEndDragging(
-        _ scrollView: UIScrollView,
-        withVelocity velocity: CGPoint,
-        targetContentOffset: UnsafeMutablePointer<CGPoint>
-        ) {
-        if scrollView.contentOffset.x > (scrollView.contentInset.right / 2) {
-            targetContentOffset.pointee.x = scrollView.contentInset.right
-        } else {
-            targetContentOffset.pointee = .zero
-        }
-    }
-
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        onSlide?(scrollView.contentOffset.x)
-        primaryButton.isHidden = scrollView.contentOffset.x < 8
-        secondaryButton.isHidden = scrollView.contentOffset.x < 8
-        buttonConnector.isHidden = scrollView.contentOffset.x < 8
-        setAnimationState(for: scrollView.contentOffset.x / scrollView.contentInset.right)
     }
 }
