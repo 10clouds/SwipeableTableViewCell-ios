@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SwipeableTableViewCell'
-  s.version          = '0.1.1'
+  s.version          = '0.2.0'
   s.summary          = 'Swipable subclass of UITableViewCell'
 
   s.description      = <<-DESC

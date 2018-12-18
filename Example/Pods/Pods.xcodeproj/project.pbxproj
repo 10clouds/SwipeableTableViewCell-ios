@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B8C37A8F5B1A10B6676B28271F6DF45 /* StretchyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743632DD4999DBF6C34D0F1429B453E3 /* StretchyView.swift */; };
+		2C6FA3320198B8CD0A928AB84DB9F80D /* SwipeableTableViewCell-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5724089214D2DA625654D7FB7EEB03 /* SwipeableTableViewCell-dummy.m */; };
 		44A565766A4E51D9FF6213B04F7E4272 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		4D4D822C21C9677900F77FD1 /* SwipeableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D822621C9677900F77FD1 /* SwipeableTableViewCell.swift */; };
-		4D4D822E21C9677900F77FD1 /* StretchyCircleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D822821C9677900F77FD1 /* StretchyCircleLayer.swift */; };
-		4D4D822F21C9677900F77FD1 /* TimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D822921C9677900F77FD1 /* TimingFunctions.swift */; };
-		4D4D823021C9677900F77FD1 /* StretchyCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D822A21C9677900F77FD1 /* StretchyCircleButton.swift */; };
-		4D4D823121C9677900F77FD1 /* StretchyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D822B21C9677900F77FD1 /* StretchyView.swift */; };
-		74A02B58E48AD82E81FBADDB668EF419 /* SwipeableTableViewCell-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B295970AE0D5116A2F0343F682D357 /* SwipeableTableViewCell-dummy.m */; };
+		49498C39892241FA5C02F21DA755AC8E /* SwipeableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7DFAF217AA7412B73AF7EB947B760 /* SwipeableTableViewCell.swift */; };
+		615CFEB3C67300D104D3B50B3A38C8DA /* TimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D354A1A50505588F046654EF8970398 /* TimingFunctions.swift */; };
 		8CA5D7C5F37A1BFB4DE9E44EC3284616 /* Pods-SwipeableTableViewCell_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A448DE700E19D42245386808E7F2BA59 /* Pods-SwipeableTableViewCell_Example-dummy.m */; };
 		A708CB9A66B3BE837E99EB3FC2146CAB /* Pods-SwipeableTableViewCell_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EA93FCC35767F299624CC2694941BE /* Pods-SwipeableTableViewCell_Tests-dummy.m */; };
+		AF2FC83D16017F9453CE3C0265712586 /* StretchyCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C7C9F9732379FE34E999FAA9E583BD /* StretchyCircleButton.swift */; };
 		C25389A68CFBC850463CF81DFA2DD4C1 /* Pods-SwipeableTableViewCell_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 30B2596750F1479FF6759495E7C6D6CE /* Pods-SwipeableTableViewCell_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE2D3052F31C2225466622C609FBD07B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
 		CFB3F5DD2522A099CD4C4AB886823D1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		D68DE044DF5B4152BA2726B066BCB0CD /* SwipeableTableViewCell-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 41B99FB0464836301C57A93366AA8599 /* SwipeableTableViewCell-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D1290BF20F22367E82D76FC5380CE45A /* StretchyCircleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9472BE801D496470FC87D2E6C66B00B0 /* StretchyCircleLayer.swift */; };
+		D68DE044DF5B4152BA2726B066BCB0CD /* SwipeableTableViewCell-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 212A0C7C392B4F7DDF277D6152EFD697 /* SwipeableTableViewCell-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DA11747261FAFFD9DE3A147DEAF5E3C8 /* Pods-SwipeableTableViewCell_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A07DD9FAA2973E2EEC242E51A291098 /* Pods-SwipeableTableViewCell_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -42,44 +42,44 @@
 
 /* Begin PBXFileReference section */
 		04286F15B82913D6DC5B257F9971DB93 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1AC8A041342363758810046080C09B74 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		212A0C7C392B4F7DDF277D6152EFD697 /* SwipeableTableViewCell-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwipeableTableViewCell-umbrella.h"; sourceTree = "<group>"; };
+		2A658FC95AA219E760321C88BE106904 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C7F2524750ED394E48CAB5B3FDCD1CA /* Pods-SwipeableTableViewCell_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwipeableTableViewCell_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		30B2596750F1479FF6759495E7C6D6CE /* Pods-SwipeableTableViewCell_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwipeableTableViewCell_Tests-umbrella.h"; sourceTree = "<group>"; };
-		41B99FB0464836301C57A93366AA8599 /* SwipeableTableViewCell-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwipeableTableViewCell-umbrella.h"; sourceTree = "<group>"; };
-		46405B8C69009B936F399F8DC197A841 /* SwipeableTableViewCell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwipeableTableViewCell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4D4D822621C9677900F77FD1 /* SwipeableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableTableViewCell.swift; sourceTree = "<group>"; };
-		4D4D822821C9677900F77FD1 /* StretchyCircleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchyCircleLayer.swift; sourceTree = "<group>"; };
-		4D4D822921C9677900F77FD1 /* TimingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimingFunctions.swift; sourceTree = "<group>"; };
-		4D4D822A21C9677900F77FD1 /* StretchyCircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchyCircleButton.swift; sourceTree = "<group>"; };
-		4D4D822B21C9677900F77FD1 /* StretchyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchyView.swift; sourceTree = "<group>"; };
+		3749FEE82946A900B56ED6DD7366B360 /* SwipeableTableViewCell.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwipeableTableViewCell.xcconfig; sourceTree = "<group>"; };
+		3D354A1A50505588F046654EF8970398 /* TimingFunctions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TimingFunctions.swift; path = SwipeableTableViewCell/Classes/TimingFunctions.swift; sourceTree = "<group>"; };
+		3E3CEF3DFD3D27DFF2E64D759C4B93CA /* SwipeableTableViewCell.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = SwipeableTableViewCell.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		43D031FDE4007CE018D4A2221B846A61 /* SwipeableTableViewCell-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwipeableTableViewCell-prefix.pch"; sourceTree = "<group>"; };
+		454F2804A04CD27344BBFACE5BFA1594 /* SwipeableTableViewCell.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwipeableTableViewCell.modulemap; sourceTree = "<group>"; };
+		46405B8C69009B936F399F8DC197A841 /* SwipeableTableViewCell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwipeableTableViewCell.framework; path = SwipeableTableViewCell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51E2FF022E30F720256CCF179D89B9F7 /* Pods-SwipeableTableViewCell_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwipeableTableViewCell_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		5A07DD9FAA2973E2EEC242E51A291098 /* Pods-SwipeableTableViewCell_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwipeableTableViewCell_Example-umbrella.h"; sourceTree = "<group>"; };
 		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		5BB7DFAF217AA7412B73AF7EB947B760 /* SwipeableTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeableTableViewCell.swift; path = SwipeableTableViewCell/Classes/SwipeableTableViewCell.swift; sourceTree = "<group>"; };
 		6B9197C9AEE58F50F3A2CF72ABCEBB58 /* Pods-SwipeableTableViewCell_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwipeableTableViewCell_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		6C24319E45F8B18EEFE7E25F69C1BE75 /* Pods-SwipeableTableViewCell_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwipeableTableViewCell_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		743632DD4999DBF6C34D0F1429B453E3 /* StretchyView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StretchyView.swift; path = SwipeableTableViewCell/Classes/StretchyView.swift; sourceTree = "<group>"; };
 		75153DE5C2A19620B99AB294D1109B12 /* Pods-SwipeableTableViewCell_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SwipeableTableViewCell_Example.modulemap"; sourceTree = "<group>"; };
 		75A9D8C7B122707DDB7D581A2CF4BFB6 /* Pods-SwipeableTableViewCell_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwipeableTableViewCell_Tests-resources.sh"; sourceTree = "<group>"; };
 		8831E84B18CED0EA8A04EE9B25EE8B11 /* Pods-SwipeableTableViewCell_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwipeableTableViewCell_Example-frameworks.sh"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9436ABA595987F56709249253738B397 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		95B295970AE0D5116A2F0343F682D357 /* SwipeableTableViewCell-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwipeableTableViewCell-dummy.m"; sourceTree = "<group>"; };
-		9C8FF4F5CDE6A9504DC3F796E08BC2AA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9472BE801D496470FC87D2E6C66B00B0 /* StretchyCircleLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StretchyCircleLayer.swift; path = SwipeableTableViewCell/Classes/StretchyCircleLayer.swift; sourceTree = "<group>"; };
 		9E368AD09D32CD070A84F00ACCA169E9 /* Pods-SwipeableTableViewCell_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwipeableTableViewCell_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A448DE700E19D42245386808E7F2BA59 /* Pods-SwipeableTableViewCell_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwipeableTableViewCell_Example-dummy.m"; sourceTree = "<group>"; };
-		A8122EF59BFD644AAB068D79710F303D /* SwipeableTableViewCell.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = SwipeableTableViewCell.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B2EC92AA910D15618337B4DD6257735D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		C1889E0BFA5B1C314D37AD1BD9ABAEF5 /* Pods-SwipeableTableViewCell_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwipeableTableViewCell_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		C483DD51D88546CFA6C7C2F18EF1BE06 /* Pods-SwipeableTableViewCell_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwipeableTableViewCell_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		C5EA93FCC35767F299624CC2694941BE /* Pods-SwipeableTableViewCell_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwipeableTableViewCell_Tests-dummy.m"; sourceTree = "<group>"; };
-		D11F063E93B3F504812E8B356BD46B9F /* Pods_SwipeableTableViewCell_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwipeableTableViewCell_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E346AC72EB81671BCA2966058170686B /* SwipeableTableViewCell.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwipeableTableViewCell.modulemap; sourceTree = "<group>"; };
+		D11F063E93B3F504812E8B356BD46B9F /* Pods_SwipeableTableViewCell_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SwipeableTableViewCell_Example.framework; path = "Pods-SwipeableTableViewCell_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D485414B10E6DA5E3F3B151E44270401 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		D9C7C9F9732379FE34E999FAA9E583BD /* StretchyCircleButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StretchyCircleButton.swift; path = SwipeableTableViewCell/Classes/StretchyCircleButton.swift; sourceTree = "<group>"; };
 		E8543335608E37DBB22857B29135D4A5 /* Pods-SwipeableTableViewCell_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwipeableTableViewCell_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		E96812AEAF8CC475438C2693ED4F5E70 /* Pods-SwipeableTableViewCell_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SwipeableTableViewCell_Tests.modulemap"; sourceTree = "<group>"; };
-		EAD36E6E481F001718B543EC5233B7B3 /* SwipeableTableViewCell.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwipeableTableViewCell.xcconfig; sourceTree = "<group>"; };
-		F1542DC68295541A61186C91AC2D3F77 /* Pods_SwipeableTableViewCell_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwipeableTableViewCell_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1542DC68295541A61186C91AC2D3F77 /* Pods_SwipeableTableViewCell_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SwipeableTableViewCell_Tests.framework; path = "Pods-SwipeableTableViewCell_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45603C15D4129AA792E9F302172D989 /* Pods-SwipeableTableViewCell_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwipeableTableViewCell_Example.release.xcconfig"; sourceTree = "<group>"; };
 		FBD72308BB99F99204B2C19D38E73FF0 /* Pods-SwipeableTableViewCell_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwipeableTableViewCell_Example-resources.sh"; sourceTree = "<group>"; };
 		FCCCDC74786AF31981AF3AE7DA5613D9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FDAB5DDBA44273A9C00E8DBC36C0BE0B /* SwipeableTableViewCell-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwipeableTableViewCell-prefix.pch"; sourceTree = "<group>"; };
+		FD5724089214D2DA625654D7FB7EEB03 /* SwipeableTableViewCell-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwipeableTableViewCell-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +110,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		008DB9F35620782E531DA8D579ECAE6C /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5B0001D6644EEE2E767BEE5C5C2453EB /* SwipeableTableViewCell */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
 		14BAF66F7EC2ECB401D6A6C603C097E2 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,52 +127,14 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		2327EB338FADC48B076DBAC6E30167A5 /* SwipeableTableViewCell */ = {
+		4A63F59970233F0744F02F8F966F468B /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				4D4D822521C9677900F77FD1 /* Classes */,
-				337A6131BDF050F911147E331B2C3498 /* Pod */,
-				42343B71B50B0B08C3D4D79F78BB9F7A /* Support Files */,
-			);
-			name = SwipeableTableViewCell;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		337A6131BDF050F911147E331B2C3498 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				9436ABA595987F56709249253738B397 /* LICENSE */,
-				1AC8A041342363758810046080C09B74 /* README.md */,
-				A8122EF59BFD644AAB068D79710F303D /* SwipeableTableViewCell.podspec */,
+				B2EC92AA910D15618337B4DD6257735D /* LICENSE */,
+				D485414B10E6DA5E3F3B151E44270401 /* README.md */,
+				3E3CEF3DFD3D27DFF2E64D759C4B93CA /* SwipeableTableViewCell.podspec */,
 			);
 			name = Pod;
-			sourceTree = "<group>";
-		};
-		42343B71B50B0B08C3D4D79F78BB9F7A /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				9C8FF4F5CDE6A9504DC3F796E08BC2AA /* Info.plist */,
-				E346AC72EB81671BCA2966058170686B /* SwipeableTableViewCell.modulemap */,
-				EAD36E6E481F001718B543EC5233B7B3 /* SwipeableTableViewCell.xcconfig */,
-				95B295970AE0D5116A2F0343F682D357 /* SwipeableTableViewCell-dummy.m */,
-				FDAB5DDBA44273A9C00E8DBC36C0BE0B /* SwipeableTableViewCell-prefix.pch */,
-				41B99FB0464836301C57A93366AA8599 /* SwipeableTableViewCell-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/SwipeableTableViewCell";
-			sourceTree = "<group>";
-		};
-		4D4D822521C9677900F77FD1 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				4D4D822A21C9677900F77FD1 /* StretchyCircleButton.swift */,
-				4D4D822821C9677900F77FD1 /* StretchyCircleLayer.swift */,
-				4D4D822B21C9677900F77FD1 /* StretchyView.swift */,
-				4D4D822621C9677900F77FD1 /* SwipeableTableViewCell.swift */,
-				4D4D822921C9677900F77FD1 /* TimingFunctions.swift */,
-			);
-			name = Classes;
-			path = SwipeableTableViewCell/Classes;
 			sourceTree = "<group>";
 		};
 		59C1F09B2F5D7E4A5A31C6604363B7C4 /* Products */ = {
@@ -175,6 +145,21 @@
 				46405B8C69009B936F399F8DC197A841 /* SwipeableTableViewCell.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		5B0001D6644EEE2E767BEE5C5C2453EB /* SwipeableTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D9C7C9F9732379FE34E999FAA9E583BD /* StretchyCircleButton.swift */,
+				9472BE801D496470FC87D2E6C66B00B0 /* StretchyCircleLayer.swift */,
+				743632DD4999DBF6C34D0F1429B453E3 /* StretchyView.swift */,
+				5BB7DFAF217AA7412B73AF7EB947B760 /* SwipeableTableViewCell.swift */,
+				3D354A1A50505588F046654EF8970398 /* TimingFunctions.swift */,
+				4A63F59970233F0744F02F8F966F468B /* Pod */,
+				B8C77CEECDBF0116D1DE5647245316E8 /* Support Files */,
+			);
+			name = SwipeableTableViewCell;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		5E0D919E635D23B70123790B8308F8EF /* iOS */ = {
@@ -189,7 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				F4070F080B5C29D22AF46D559814AB31 /* Development Pods */,
+				008DB9F35620782E531DA8D579ECAE6C /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				59C1F09B2F5D7E4A5A31C6604363B7C4 /* Products */,
 				14BAF66F7EC2ECB401D6A6C603C097E2 /* Targets Support Files */,
@@ -212,6 +197,20 @@
 			);
 			name = "Pods-SwipeableTableViewCell_Example";
 			path = "Target Support Files/Pods-SwipeableTableViewCell_Example";
+			sourceTree = "<group>";
+		};
+		B8C77CEECDBF0116D1DE5647245316E8 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2A658FC95AA219E760321C88BE106904 /* Info.plist */,
+				454F2804A04CD27344BBFACE5BFA1594 /* SwipeableTableViewCell.modulemap */,
+				3749FEE82946A900B56ED6DD7366B360 /* SwipeableTableViewCell.xcconfig */,
+				FD5724089214D2DA625654D7FB7EEB03 /* SwipeableTableViewCell-dummy.m */,
+				43D031FDE4007CE018D4A2221B846A61 /* SwipeableTableViewCell-prefix.pch */,
+				212A0C7C392B4F7DDF277D6152EFD697 /* SwipeableTableViewCell-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/SwipeableTableViewCell";
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -238,14 +237,6 @@
 			);
 			name = "Pods-SwipeableTableViewCell_Tests";
 			path = "Target Support Files/Pods-SwipeableTableViewCell_Tests";
-			sourceTree = "<group>";
-		};
-		F4070F080B5C29D22AF46D559814AB31 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				2327EB338FADC48B076DBAC6E30167A5 /* SwipeableTableViewCell */,
-			);
-			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,7 +274,7 @@
 			buildConfigurationList = 60E5FD600658BBEE0F3CCEE8821B1622 /* Build configuration list for PBXNativeTarget "SwipeableTableViewCell" */;
 			buildPhases = (
 				CCA93605774D670B3193CA08ECA70E2E /* Headers */,
-				3E66732E201AD147DFC1ED46BE2AA5D8 /* Sources */,
+				27A3724EF7459A4335EDEFCDD8E3D366 /* Sources */,
 				07E7F80194E95A199086BE48CEFB165A /* Frameworks */,
 				8DD3B5D9C4508CABF956303830F21D85 /* Resources */,
 			);
@@ -342,11 +333,6 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
-				TargetAttributes = {
-					3F3D028B1ACA8EED05A2703E75C93B6D = {
-						LastSwiftMigration = 1010;
-					};
-				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -400,16 +386,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3E66732E201AD147DFC1ED46BE2AA5D8 /* Sources */ = {
+		27A3724EF7459A4335EDEFCDD8E3D366 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D4D822C21C9677900F77FD1 /* SwipeableTableViewCell.swift in Sources */,
-				4D4D822F21C9677900F77FD1 /* TimingFunctions.swift in Sources */,
-				4D4D822E21C9677900F77FD1 /* StretchyCircleLayer.swift in Sources */,
-				74A02B58E48AD82E81FBADDB668EF419 /* SwipeableTableViewCell-dummy.m in Sources */,
-				4D4D823121C9677900F77FD1 /* StretchyView.swift in Sources */,
-				4D4D823021C9677900F77FD1 /* StretchyCircleButton.swift in Sources */,
+				AF2FC83D16017F9453CE3C0265712586 /* StretchyCircleButton.swift in Sources */,
+				D1290BF20F22367E82D76FC5380CE45A /* StretchyCircleLayer.swift in Sources */,
+				1B8C37A8F5B1A10B6676B28271F6DF45 /* StretchyView.swift in Sources */,
+				2C6FA3320198B8CD0A928AB84DB9F80D /* SwipeableTableViewCell-dummy.m in Sources */,
+				49498C39892241FA5C02F21DA755AC8E /* SwipeableTableViewCell.swift in Sources */,
+				615CFEB3C67300D104D3B50B3A38C8DA /* TimingFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,7 +462,7 @@
 		};
 		288AF8ECBE05BB8891B9E9D8EC340C1B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EAD36E6E481F001718B543EC5233B7B3 /* SwipeableTableViewCell.xcconfig */;
+			baseConfigurationReference = 3749FEE82946A900B56ED6DD7366B360 /* SwipeableTableViewCell.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -499,7 +485,8 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -513,7 +500,6 @@
 			baseConfigurationReference = F45603C15D4129AA792E9F302172D989 /* Pods-SwipeableTableViewCell_Example.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -537,8 +523,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -551,7 +537,6 @@
 			baseConfigurationReference = 2C7F2524750ED394E48CAB5B3FDCD1CA /* Pods-SwipeableTableViewCell_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -577,7 +562,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -743,7 +727,7 @@
 		};
 		E6AF439AF786A4021411656ECEE2730A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EAD36E6E481F001718B543EC5233B7B3 /* SwipeableTableViewCell.xcconfig */;
+			baseConfigurationReference = 3749FEE82946A900B56ED6DD7366B360 /* SwipeableTableViewCell.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
