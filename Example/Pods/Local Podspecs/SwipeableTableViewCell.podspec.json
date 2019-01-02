@@ -1,6 +1,6 @@
 {
   "name": "SwipeableTableViewCell",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "summary": "Swipable subclass of UITableViewCell",
   "description": "A subclass of UITableViewCell which adds an ability to swipe left the content of the cell.",
   "homepage": "https://github.com/10clouds/SwipeableTableViewCell-ios",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/10clouds/SwipeableTableViewCell-ios.git",
-    "tag": "0.2.0"
+    "tag": "0.2.1"
   },
   "platforms": {
     "ios": "10.3"
