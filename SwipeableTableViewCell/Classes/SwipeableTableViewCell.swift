@@ -162,12 +162,16 @@ open class SwipeableTableViewCell: UITableViewCell {
     }
 
     @objc private func handlePan(_ recognizer: UIPanGestureRecognizer) {
-        if recognizer.state == .ended {
+        switch recognizer.state {
+        case .ended, .cancelled:
             startSlideAnimation(recognizer)
+        default:
+            break
         }
     }
 
     @objc private func handlePrimaryButtonTap() {
+        guard contentOffset.x >= Constants.disconnectPoint else { return }
         onPrimaryButtonTap?()
     }
 
@@ -193,6 +197,7 @@ open class SwipeableTableViewCell: UITableViewCell {
                 self.scrollView.setContentOffset(self.slideTargetPoint, animated: false)
             }, completion: { _ in
                 self.buttonScaleAnimationIsRunning = false
+                self.updateSlideDestination()
                 displayLink?.invalidate()
             }
         )
@@ -215,12 +220,12 @@ open class SwipeableTableViewCell: UITableViewCell {
 
     private func updateShape() {
         guard slideDestination == .end else { return }
-
         scrollViewContentView.move(by: contentOffset.x)
-
         button.stretch(by: calulateCircleOffset(for: contentOffset.x))
         button.imageView?.alpha = contentOffset.x > Constants.buttonDimension / 2 + Constants.primaryButtonTrailingOffset ? 1 : 0
-        button.backgroundColor = contentOffset.x > Constants.disconnectPoint ? buttonActiveBackgroundColor : scrollViewContentView.backgroundColor
+        if !button.isHighlighted {
+            button.backgroundColor = contentOffset.x > Constants.disconnectPoint ? buttonActiveBackgroundColor : scrollViewContentView.backgroundColor
+        }
     }
 
     private func calulateCircleOffset(for x: CGFloat) -> CGFloat {
@@ -230,7 +235,7 @@ open class SwipeableTableViewCell: UITableViewCell {
     private func updateSlideDestination() {
         if contentOffset.x <= 5 {
             slideDestination = .end
-        } else if contentOffset.x >= Constants.maxOffset - 5 {
+        } else if contentOffset.x >= Constants.maxOffset {
             slideDestination = .begin
         }
     }
@@ -243,8 +248,8 @@ extension SwipeableTableViewCell: UIScrollViewDelegate {
             y: scrollView.contentOffset.y / Constants.contentOffsetMovementDivider
         )
 
-        updateSlideDestination()
         updateShape()
+        updateSlideDestination()
     }
 }
 

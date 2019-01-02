@@ -42,14 +42,15 @@ final class StretchyCircleButton: UIButton {
     }
 
     override var isHighlighted: Bool {
-        didSet {
+        willSet {
+            guard isHighlighted != newValue else { return }
             UIView.animate(
                 withDuration: 0.25,
                 delay: 0,
                 options: .curveEaseInOut,
                 animations: {
-                    self.transform = self.isHighlighted ? CGAffineTransform(scaleX: 1.12, y: 1.12) : .identity
-                    self.backgroundColor = self.backgroundColor?.withAlphaComponent(self.isHighlighted ? 0.6 : 1)
+                    self.backgroundColor = self.backgroundColor?.withAlphaComponent(newValue ? 0.6 : 1)
+                    self.transform = newValue ? CGAffineTransform(scaleX: 1.12, y: 1.12) : .identity
                 }
             )
         }
